@@ -1,0 +1,17 @@
+:root {
+  --navigation-height: 25px;
+  --router-view-height: calc(100% - 41px);
+}
+
+.navigation{
+  height: var(--navigation-height);
+}
+.routerView{
+  height: var(--router-view-height);
+}
+.navigation-search{
+  
+  width: 300px !important;
+  margin-top: 2px; 
+  display: inline !important;
+}
