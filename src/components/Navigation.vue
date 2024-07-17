@@ -1,13 +1,14 @@
 <template>
-  <div >
-    <ul class="navigation">
+  <div>
+    <!--<ul >
       <li><router-link to="/">首頁</router-link></li>
       <li><router-link to="/about">關於我們</router-link></li>
       <li>
         <input v-model.trim="search" placeholder="關鍵字查詢" class=" form-control navigation-search">
       </li>
     </ul>
-    <router-view class="routerView"></router-view>
+    <input v-model.trim="search" placeholder="關鍵字查詢" class=" form-control navigation-search navigationStyle" >-->
+    <router-view class="mapStyle"></router-view>
   </div>
 </template>
 
@@ -36,4 +37,6 @@ a {
 a:hover {
   color: #4267b2; /* Facebook 的主要藍色 */
 }
+
+
 </style>
