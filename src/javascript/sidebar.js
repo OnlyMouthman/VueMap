@@ -9,3 +9,14 @@ export function toggleSidebar(name) {
         //content.style.marginLeft = '0';
     }
 }
+export function toggleSidebarOpen(name, isOpen) {
+    const sidebar = document.getElementById(name);
+    //const content = document.getElementById('content');
+    if (isOpen) {
+        sidebar.style.transform = 'translateX(0)';
+        //content.style.marginLeft = '250px';
+    } else {
+        sidebar.style.transform = 'translateX(-360px)';
+        //content.style.marginLeft = '0';
+    }
+}

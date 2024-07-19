@@ -72,7 +72,7 @@ export default {
     async startSearch(){
       var _vue = this;
       //toolMapSearch.Search(_vue.map, _vue.search);
-      sidebar.toggleSidebar('sidebarSearch');
+      sidebar.toggleSidebarOpen('sidebarSearch', true);
       _vue.searchList = await toolMapSearch.SearchNominatim(_vue.search)
     },
     ///側滑選單設定
@@ -82,6 +82,7 @@ export default {
     SearchListClick(item) {
       var _vue = this;
       toolMapSearch.SearchNominatimClick(_vue.map, _vue.tempLayer, item);
+      sidebar.toggleSidebarOpen('sidebarSearch', false);
     }
   },
   mounted() {

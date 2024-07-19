@@ -51,25 +51,9 @@
     background-color: #575757;
 }
 
-.content {
-    margin-left: 380px;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-}
 
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-    .sidebar ul li {
-        display: inline-block;
-    }
-    .content {
-        margin-left: 0;
-    }
-}
+
+
 
 
 .sidebarSearch {
@@ -84,19 +68,7 @@
     transition: transform 0.3s ease;
     z-index: 2000;
 }
-@media screen and (max-width: 768px) {
-    .sidebarSearch {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-    .sidebarSearch ul li {
-        display: inline-block;
-    }
-    .content {
-        margin-left: 0;
-    }
-}
+
 .sidebarSearch ul {
     margin-top: 50px;
     list-style-type: none;
