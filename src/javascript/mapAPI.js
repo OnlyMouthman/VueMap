@@ -1,10 +1,10 @@
 import axios from 'axios';
-var ApiUrl = "http://192.168.100.171/MapAPI/api/Geometry/"
+//var ApiUrl = "http://192.168.100.171/MapAPI/api/Geometry/"
+const ApiUrl = import.meta.env.VITE_API_URL + "Geometry/";
+const NominatimUrl = "https://nominatim.openstreetmap.org/search?q=";
 
-
-export function searchName(searchName){
-    //http://localhost/MapAPI/swagger/index.html
-    
+///資料庫查資料
+export function searchAPIName(searchName){
     return new Promise((resolve) => {
         axios.get(ApiUrl + 'SearchName?search='+searchName)
             .then(response => {
@@ -15,5 +15,19 @@ export function searchName(searchName){
             });
     });
     //return searchName;
+}
+
+///透過opendata找資料
+///資料來源nominatim.openstreetmap.org
+export function SearchAPINominatim(searchName){
+    return new Promise((resolve) => {
+        axios.get(NominatimUrl + searchName + "&format=geojson")
+            .then(response => {
+                resolve(response);
+            })
+            .catch(error => {
+                resolve(error);
+            });
+    });
 }
 

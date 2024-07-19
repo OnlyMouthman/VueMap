@@ -15,9 +15,10 @@
   margin-top: 2px; 
   display: inline !important;
   top: 10px; 
-  left: 70px; 
+  left: 54px; 
   z-index: 3000;
   position: absolute;
+  border-radius: 0 0 0 0 !important;
 }
 .navigation-searchBtn{
   height: 40px;
@@ -25,9 +26,14 @@
   margin-top: 2px; 
   display: inline !important;
   top: 10px; 
-  left: 320px; 
+  left: 304px; 
   z-index: 3000;
   position: absolute;
+  border-radius: 0 10px 10px 0 !important;
+}
+.bg-mblack {
+  --bs-bg-opacity: 1;
+  background-color: #333 !important;
 }
 
 .mapStyle {
