@@ -67,10 +67,11 @@
     top: 0;
     transition: transform 0.3s ease;
     z-index: 2000;
+    padding-top: 50px;
 }
 
 .sidebarSearch ul {
-    margin-top: 50px;
+    
     list-style-type: none;
     padding: 0;
 }

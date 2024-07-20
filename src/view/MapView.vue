@@ -19,11 +19,12 @@
     </div>
 
     <div class="sidebarSearch" id="sidebarSearch">
-      <ul>
+      <!--<ul>
         <li v-for="(item, index) in searchList" :key="index" @click="SearchListClick(item)">
           {{ item["Describe"] }}
         </li>
-      </ul>
+      </ul>-->
+      <TimeLine></TimeLine>
     </div>
 
     <div id="map" style="height: 100%; width: 100%;"></div>
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+import TimeLine from '../components/TimeLine.vue'
 import "../stylesSidebar.css";
 import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
@@ -43,6 +45,7 @@ export default {
   components: {
     LMap,
     LTileLayer,
+    TimeLine
   },
   data() {
     return {
@@ -73,7 +76,7 @@ export default {
       var _vue = this;
       //toolMapSearch.Search(_vue.map, _vue.search);
       sidebar.toggleSidebarOpen('sidebarSearch', true);
-      _vue.searchList = await toolMapSearch.SearchNominatim(_vue.search)
+      //_vue.searchList = await toolMapSearch.SearchNominatim(_vue.search)
     },
     ///側滑選單設定
     toggleSidebar(){
