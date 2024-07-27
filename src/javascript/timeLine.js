@@ -99,7 +99,7 @@ export function setFinalData(){
                 var e = data["EndYear"];
                 var ss = parseInt((s-startYear)/100);
                 var ee = parseInt((e-startYear)/100);
-                for(var k = ss; ss < ee+1; ss++){
+                for(var k = ss; k < ee+1; k++){
                     timeLineArray2[i][k] =  [0,5,0, data["Chinese"]];
                 }
             }
