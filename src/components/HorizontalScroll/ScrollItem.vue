@@ -1,5 +1,5 @@
 <template>
-  <div class="item itemtooltip">
+  <div class="item itemtooltip" v-b-tooltip.hover title="{year[3]}">
     <slot></slot>
     <span class="tooltiptext" v-if="year[3] != '' && year[3] != null">{{ year[3] }}</span>
     <!--<div class="itemcolor1" style="width: 40%;"></div>
