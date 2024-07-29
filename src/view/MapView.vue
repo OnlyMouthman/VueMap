@@ -32,8 +32,11 @@
     <PopupWindow v-if="showPopupHistory" @close="showPopupHistory = false" popupTitle="歷史">
       <div class="popupContent">
         <horizontal-scroll>
-          <scroll-row v-for="(row, rowIndex) in rows" :key="rowIndex">
-            <scroll-item v-for="(item, itemIndex) in row" :key="itemIndex" title="test" :year="item">
+          <scroll-title :timeLineStartYear="timeLineStartYear" :timeLineEndYear="timeLineEndYear">
+            
+          </scroll-title>
+          <scroll-row v-for="(row, rowIndex) in rows" :index="rowIndex" :timeLineYear="timeLineEndYear - timeLineStartYear">
+            <scroll-item v-for="(item, itemIndex) in row" :index="itemIndex" :itemWidth="item['yearWidth']" :itemMarginLeft="item['yearMarginLeft']" :year="item">
 
             </scroll-item>
           </scroll-row>
@@ -56,6 +59,7 @@ import * as timeLine from "../javascript/timeLine.js"
 import ScrollRow from '../components/HorizontalScroll/ScrollRow.vue';
 import HorizontalScroll from '../components/HorizontalScroll/HorizontalScroll.vue';
 import ScrollItem from '../components/HorizontalScroll/ScrollItem.vue';
+import ScrollTitle from '../components/HorizontalScroll/ScrollTitle.vue';
 import PopupWindow from '../components/PopupWindow.vue';
 import CollapsibleList from '../components/CollapsibleList.vue'
 import "../stylesSidebar.css";
@@ -77,7 +81,8 @@ export default {
     PopupWindow,
     HorizontalScroll,
     ScrollItem,
-    ScrollRow
+    ScrollRow,
+    ScrollTitle,
   },
   data() {
     return {
@@ -92,7 +97,9 @@ export default {
       //draw
       showPopupDraw: false,
 
-      rows: testData.getData(),
+      rows: null,
+      timeLineStartYear: 0,
+      timeLineEndYear:0,
     };
   },
   methods: {
@@ -132,11 +139,15 @@ export default {
       var endYear;
       timeLine.initData();
       timeLine.sortData(data.data);
-      this.rows = timeLine.getTimeLineArray2()
-      console.log(timeLine.getTimeLineArray())
-      console.log(timeLine.getStarYear())
-      console.log(timeLine.getEndYear())
-    }
+
+      this.timeLineStartYear = timeLine.getStarYear()
+      this.timeLineEndYear = timeLine.getEndYear()
+      var array = timeLine.getTimeLineArray();
+      this.timeLineItemPostition = Array.from({ length: array.length }, (_, i) => this.timeLineStartYear )
+      console.log(array);
+      this.rows = array
+    },
+    
   },
   mounted() {
     var _vue = this;

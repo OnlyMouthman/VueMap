@@ -1,13 +1,10 @@
 <template>
-  <div class="item itemtooltip" title="{year[3]}">
+  <div class="item" v-bind:style="{width: itemWidth + 'px', marginLeft: itemMarginLeft + 'px', backgroundColor: color[index%6]}" >
+    {{year["Chinese"]}}
     <slot></slot>
-    <span class="tooltiptext" v-if="year[3] != '' && year[3] != null">{{ year[3] }}</span>
     <!--<div class="itemcolor1" style="width: 40%;"></div>
     <div class="itemcolor2" style="width: 20%;"></div>
     <div class="itemcolor3" style="width: 40%;"></div>-->
-    <div class="itemcolor2" v-bind:style="{width: year[0] * 20 + '%'}"></div>
-    <div class="itemcolor1" v-bind:style="{width: year[1] * 20 + '%'}"></div>
-    <div class="itemcolor2" v-bind:style="{width: year[2] * 20 + '%'}"></div>
   </div>
 </template>
 
@@ -16,15 +13,21 @@ export default {
   name: 'ScrollItem',
   props: {
     year: {
-      type: Array,
-      default: [1, 1, 1, ""]
+      type: Object
     },
-    title: {
-      type: String
+    itemWidth: {
+      type: Number,
+    },
+    itemMarginLeft:{
+      type: Number,
+    },
+    index:{
+      type: Number,
     }
   },
   data() {
     return {
+      color:["#e21c6f", "#fe465e", "#f87a50", "#fea64e", "#f9ce53", "#aaca43", "#60bc5f", "#53d4e1", "#3999d1", "#8473d2"]
     }
   }
 };
@@ -32,49 +35,20 @@ export default {
 
 <style scoped>
 .item {
-  width: 40px;
-  height: 40px;
+  width: 0px;
+  height: 60px;
   padding: 0px;
-  background-color: #f0f0f0;
+  color: #fff;
+  font-size: 20px;
   text-align: center;
   flex-shrink: 0;
   user-select: none;
-  
-  
+  border-radius: 25px;
   /* standard syntax */
   -webkit-user-select: none;
   /* for Chrome、Safari */
   -moz-user-select: none;
   /* for Mozilla、Firefox */
 }
-.itemcolor1{
-  margin-top: 0%;
-  background-color: blue;
-  height: 100%;
-  display: inline-block;
-  
-}
-.itemcolor2{
-  margin-top: 0%;
-  background-color:#f0f0f0;
-  height: 100%;
-  display: inline-block;
-}
-.itemtooltip .tooltiptext {
-  visibility: hidden;
-  width: 60px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
 
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
-.itemtooltip:hover .tooltiptext {
-  visibility: visible;
-}
 </style>

@@ -48,6 +48,7 @@ export default {
   width: 100%;
   overflow: hidden;
   cursor: grab;
+  position: relative;
 }
 
 .container:active {

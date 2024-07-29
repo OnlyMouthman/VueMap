@@ -21,7 +21,7 @@ export function sortData(data) {
   sortTwoDimensionalArray();
 
   //最後一次整理
-  setFinalData();
+  //setFinalData();
 }
 function sortOneDimensionalArray(data) {
  
@@ -55,14 +55,22 @@ function sortTwoDimensionalArray() {
 
   for (var i = 0; i < timeLineArrayTemp.length; i++) {
     var item = timeLineArrayTemp[i];
-    var startYear = timeLineArrayTemp[i]["StartYear"];
-    var endYear = timeLineArrayTemp[i]["EndYear"];
+    var startYear = item["StartYear"];
+    var endYear = item["EndYear"];
     if (timeLineStartYear > startYear) timeLineStartYear = startYear;
     if (timeLineEndYear < endYear) timeLineEndYear = endYear;
 
-    setTimeLineArray(timeLineArrayTemp[i], 0);
+    setTimeLineArray(item, 0);
   }
-  
+  for (var i = 0; i < timeLineArray.length; i++){
+    var endYear = timeLineStartYear;
+    for(var j = 0; j < timeLineArray[i].length; j++){
+        var item = timeLineArray[i][j];
+        item["yearWidth"] = (item["EndYear"] - item["StartYear"]) * 2;
+        item["yearMarginLeft"] = (item["StartYear"] - endYear) * 2;
+        endYear = item["EndYear"];
+    }
+  }
 }
 function setTimeLineArray(array, level) {
   var startYear = array["StartYear"];
@@ -105,8 +113,6 @@ export function setFinalData(){
             }
         }
     }
-    console.log("~~")
-    console.log(timeLineArray2)
 }
 export function getStarYear() {
   return timeLineStartYear;
