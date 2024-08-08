@@ -1,5 +1,5 @@
 import axios from 'axios';
-//var ApiUrl = "http://192.168.100.171/MapAPI/api/Geometry/"
+
 const ApiUrl = import.meta.env.VITE_API_URL;
 const NominatimUrl = "https://nominatim.openstreetmap.org/search?q=";
 
